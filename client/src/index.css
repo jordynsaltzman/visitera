@@ -7,3 +7,12 @@ body {
   width: 100vw;
   overflow: hidden;
 }
+
+.marker {
+  stroke: #2a9d8f;
+  transform: translate(-50%, -100%);
+}
+
+.popup {
+  max-width: 300px;
+}
