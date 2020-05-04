@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import { listLogEntries } from "./API";
+import logo from "./images/Visitera.png";
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
@@ -26,7 +27,13 @@ const App = () => {
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={setViewport}
       mapStyle="mapbox://styles/jordynsaltzman/ck9s1ukqx1fej1ioeyteihsn8"
-    />
+    >
+      <img
+        src={logo}
+        alt="Visitera logo"
+        style={{ height: "50px", padding: "15px" }}
+      />
+    </ReactMapGL>
   );
 };
 

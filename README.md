@@ -2,6 +2,8 @@
 
 Visitera is a personal travel log application built with a React front-end, a Node/Express backend, and a MongoDB database.
 
+![Screenshot](client/src/images/visitera-screenshot.JPG)
+
 ## TODO
 
 - [x] Setup Server
