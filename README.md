@@ -1,22 +1,23 @@
 # Visitera
-A travel log application built in React, Node, Express, MongoDB
 
+Visitera is a personal travel log application built with a React front-end, a Node/Express backend, and a MongoDB database.
 
 ## TODO
-- [ ] Setup Server
-  - [ ] Install Dependencies
-  - [ ]  Install / Setup Linter
-  - [ ]  Setup Express App
-  - [ ]  Setup Not Found and Error Middlewares
-- [ ] Model DB
+
+- [x] Setup Server
+  - [x] Install Dependencies
+  - [x] Install / Setup Linter
+  - [x] Setup Express App
+  - [x] Setup Not Found and Error Middlewares
+- [x] Model DB
   - What data will be stored?
-- [ ] Setup Mongoose Model(s)
-- [ ] POST /logs
+- [x] Setup Mongoose Model(s)
+- [x] POST /logs
   - Create a new log entry
-- [ ] GET / logs
+- [x] GET / logs
   - List all log entries
-- [ ]  Setup Client
-- [ ]  Create Form to add a new entry
+- [ ] Setup Client
+- [ ] Create form to add a new entry
 - [ ] Setup Map SDK on client
 - [ ] List all log entries on map
 - [ ] DEPLOY!
