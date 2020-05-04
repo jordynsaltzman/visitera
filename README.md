@@ -16,8 +16,8 @@ Visitera is a personal travel log application built with a React front-end, a No
   - Create a new log entry
 - [x] GET / logs
   - List all log entries
-- [ ] Setup Client
+- [x] Setup Client
 - [ ] Create form to add a new entry
-- [ ] Setup Map SDK on client
+- [x] Setup Map SDK on client
 - [ ] List all log entries on map
 - [ ] DEPLOY!
