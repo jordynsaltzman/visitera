@@ -1,6 +1,8 @@
-# Visitera
+# <img src="client/src/images/Visitera.png" height="50px">
 
 Visitera is a personal travel log application built with a React front-end, a Node/Express backend, and a MongoDB database.
+
+## Preview (Not yet complete)
 
 ![Screenshot](client/src/images/visitera-screenshot.JPG)
 
@@ -21,5 +23,5 @@ Visitera is a personal travel log application built with a React front-end, a No
 - [x] Setup Client
 - [ ] Create form to add a new entry
 - [x] Setup Map SDK on client
-- [ ] List all log entries on map
+- [x] List all log entries on map
 - [ ] DEPLOY!
