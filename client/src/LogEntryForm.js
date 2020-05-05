@@ -18,8 +18,8 @@ const LogEntryForm = ({ location, onClose }) => {
     } catch (error) {
       console.error(error);
       setError(error.message);
+      setLoading(false);
     }
-    setLoading(false);
   };
   return (
     <form className="entry-form" onSubmit={handleSubmit(onSubmit)}>

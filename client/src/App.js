@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import Geocoder from "react-map-gl-geocoder";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+
 import { listLogEntries } from "./API";
 import LogEntryForm from "./LogEntryForm";
 import logo from "./images/Visitera.png";
@@ -34,9 +37,12 @@ const App = () => {
     });
   };
 
+  let mapRef = React.useRef();
+
   return (
     <ReactMapGL
       {...viewport}
+      ref={mapRef}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={setViewport}
       mapStyle="mapbox://styles/jordynsaltzman/ck9s1ukqx1fej1ioeyteihsn8"
@@ -47,13 +53,14 @@ const App = () => {
         alt="Visitera logo"
         style={{ height: "50px", padding: "15px" }}
       />
+      <Geocoder
+        mapRef={mapRef}
+        onViewportChange={setViewport}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      />
       {logEntries.map((entry) => (
-        <>
-          <Marker
-            key={entry._id}
-            latitude={entry.latitude}
-            longitude={entry.longitude}
-          >
+        <React.Fragment key={entry._id}>
+          <Marker latitude={entry.latitude} longitude={entry.longitude}>
             <div
               onClick={() =>
                 setShowPopup({
@@ -82,6 +89,9 @@ const App = () => {
             >
               <div className="popup">
                 <h3>{entry.title}</h3>
+                {entry.image ? (
+                  <img src={entry.image} alt={entry.title} />
+                ) : null}
                 <p>{entry.comments}</p>
                 <small>
                   Visited on {new Date(entry.visitDate).toLocaleDateString}
@@ -89,7 +99,7 @@ const App = () => {
               </div>
             </Popup>
           ) : null}
-        </>
+        </React.Fragment>
       ))}
       {addEntryLocation ? (
         <>
