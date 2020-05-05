@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { listLogEntries } from "./API";
+import LogEntryForm from "./LogEntryForm";
 import logo from "./images/Visitera.png";
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
   const [showPopup, setShowPopup] = useState({});
+  const [addEntryLocation, setAddEntryLocation] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -22,12 +24,22 @@ const App = () => {
     })();
   }, []);
 
+  const showAddMarkerPopup = (event) => {
+    console.log(event);
+    const [longitude, latitude] = event.lngLat;
+    setAddEntryLocation({
+      latitude,
+      longitude,
+    });
+  };
+
   return (
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={setViewport}
       mapStyle="mapbox://styles/jordynsaltzman/ck9s1ukqx1fej1ioeyteihsn8"
+      onDblClick={showAddMarkerPopup}
     >
       <img
         src={logo}
@@ -48,16 +60,13 @@ const App = () => {
                 })
               }
             >
-              <img
-                className="marker"
+              <i
+                className="fa fa-map-marker blue-marker"
+                aria-hidden="true"
                 style={{
-                  height: `${6 * viewport.zoom}px`,
-                  width: `${6 * viewport.zoom}px`,
-                  //maybe set a max width and max height so when u zoom it doesnt get too big
+                  fontSize: `${5 * viewport.zoom}px`,
                 }}
-                src="https://i.imgur.com/y0G5YTX.png"
-                alt="marker"
-              />
+              ></i>
             </div>
           </Marker>
           {showPopup[entry._id] ? (
@@ -68,6 +77,7 @@ const App = () => {
               closeOnClick={false}
               dynamicPosition={true}
               onClose={() => setShowPopup({})}
+              anchor="top"
             >
               <div className="popup">
                 <h3>{entry.title}</h3>
@@ -80,6 +90,38 @@ const App = () => {
           ) : null}
         </>
       ))}
+      {addEntryLocation ? (
+        <>
+          <Marker
+            latitude={addEntryLocation.latitude}
+            longitude={addEntryLocation.longitude}
+          >
+            <div>
+              <i
+                className="fa fa-map-marker orange-marker"
+                aria-hidden="true"
+                style={{
+                  fontSize: `${5 * viewport.zoom}px`,
+                  // width: `${6 * viewport.zoom}px`,
+                }}
+              ></i>
+            </div>
+          </Marker>
+          <Popup
+            latitude={addEntryLocation.latitude}
+            longitude={addEntryLocation.longitude}
+            closeButton={true}
+            closeOnClick={false}
+            dynamicPosition={true}
+            onClose={() => addEntryLocation(null)}
+            anchor="top"
+          >
+            <div className="popup">
+              <LogEntryForm />
+            </div>
+          </Popup>
+        </>
+      ) : null}
     </ReactMapGL>
   );
 };

@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "DINPro-Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("DINPro-Medium"), url("DINPro-Medium_13936.woff") format("woff");
+}
+
+@font-face {
+  font-family: "DINPro-Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("DINPro-Light"), url("DINPro-Light_13935.woff") format("woff");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -6,13 +20,191 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  font-family: "DINPro-Medium";
 }
 
-.marker {
-  stroke: #2a9d8f;
+.fa-map-marker {
   transform: translate(-50%, -100%);
 }
 
+.blue-marker {
+  color: #5ca4a9;
+}
+
+.orange-marker {
+  color: #e76f51;
+}
+
 .popup {
-  max-width: 300px;
+  width: 30vw;
+  padding: 1rem;
+}
+
+.title-section,
+.description-section,
+.comments-section,
+.image-section {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 1.2em 0;
+}
+.date-section {
+  display: flex;
+  flex-direction: row;
+  margin: 2.5em 0 0 0;
+}
+
+input,
+label {
+  transition: all 0.45s ease;
+}
+
+label {
+  padding-left: 10px;
+  transform: translate(4px, -14px) scale(1.02);
+  transform-origin: left top;
+  position: absolute;
+  color: #222;
+}
+
+input:focus,
+input:not(:placeholder-shown) {
+  border-bottom: 3px solid #5ca4a9;
+}
+
+input:not(:placeholder-shown) ~ label,
+input:focus ~ label {
+  transform: translate(10px, -35px) scale(0.8);
+  padding-left: 0px;
+  color: #5ca4a9;
+}
+
+input {
+  font-family: "DINPro-Light";
+
+  font-size: 1em;
+  padding: 20px 10px 6px 10px;
+  border: none;
+  border-bottom: 1px solid #222;
+  outline: none;
+  border-radius: 5px 5px 0px 0px;
+}
+
+input::placeholder {
+  opacity: 0;
+}
+
+.visit-date-input:valid ~ .visit-date-label,
+.visit-date-input:invalid ~ .visit-date-label {
+  padding-left: 10px;
+  transform: translate(4px, -14px) scale(1.02);
+  transform-origin: left top;
+  position: absolute;
+  color: #222;
+}
+
+/*styling button */
+.button-div {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+}
+.visit-date-input {
+  width: 50%;
+  border: none !important;
+}
+
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cdcdcd;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition: width 0.4s ease-in-out;
+}
+.add-btn {
+  font-family: "DINPro-Medium";
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.add-btn:hover {
+  width: 140px;
+  cursor: pointer;
+}
+.add-btn::before,
+.add-btn::after {
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: #e76f51;
+}
+.add-btn::after {
+  right: 14px;
+  overflow: hidden;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.add-btn::before {
+  left: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.icon-btn:focus {
+  outline: none;
+}
+.btn-txt {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.add-btn:hover::before,
+.add-btn:hover::after {
+  width: 4px;
+  border-radius: 2px;
+}
+.add-btn:hover .btn-txt {
+  opacity: 1;
+}
+.add-icon::after,
+.add-icon::before {
+  transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 2px;
+  top: calc(50% - 10px);
+  background: #e76f51;
+  overflow: hidden;
+}
+.add-icon::before {
+  left: 22px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.add-icon::after {
+  right: 22px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.add-btn:hover .add-icon::before {
+  left: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+.add-btn:hover .add-icon::after {
+  right: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+@media only screen and (max-width: 775px) {
+  .popup {
+    width: 80vw;
+  }
 }
