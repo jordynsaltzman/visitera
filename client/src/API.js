@@ -1,7 +1,7 @@
 const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:1337"
-    : "https://visitera-qmdkmf709.now.sh/";
+    : "https://cors-anywhere.herokuapp.com/https://visitera-qmdkmf709.now.sh";
 
 export async function listLogEntries() {
   const response = await fetch(`${API_URL}/api/logs`);
