@@ -47,6 +47,8 @@ body {
 
 .popup img {
   height: 200px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.337);
   width: auto;
   max-width: 350px;
   text-align: center;
@@ -221,6 +223,30 @@ input::placeholder {
   height: 4px;
   top: calc(50% - 2px);
 }
+
+.mapboxgl-ctrl-geocoder--input::placeholder {
+  opacity: 1;
+  font-family: DINPro-Light;
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 24px;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.mapboxgl-popup-close-button:hover {
+  transform: rotate(180deg);
+  color: #e76f51;
+
+  background-color: transparent !important;
+}
+
+.mapboxgl-popup-close-button:active,
+.mapboxgl-popup-close-button:focus {
+  outline: none;
+  border: none;
+}
+
 @media only screen and (max-width: 450px) {
   .popup {
     width: 300px;

@@ -86,7 +86,12 @@ const App = () => {
               anchor="top"
             >
               <div className="popup">
-                <h3>{entry.title}</h3>
+                <h3 style={{ marginBottom: "10px" }}>{entry.title}</h3>
+                <hr
+                  style={{
+                    marginBottom: "10px",
+                  }}
+                />
                 {entry.image ? (
                   <img src={entry.image} alt={entry.title} />
                 ) : null}
