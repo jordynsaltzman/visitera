@@ -5,6 +5,7 @@ Visitera is a personal travel log application built with a React front-end, a No
 ## Preview (Not yet complete)
 
 ![Screenshot](client/src/images/visitera-screenshot.JPG)
+![Screenshot](client/src/images/visitera-screenshot2.JPG)
 
 ## TODO
 
@@ -21,7 +22,7 @@ Visitera is a personal travel log application built with a React front-end, a No
 - [x] GET / logs
   - List all log entries
 - [x] Setup Client
-- [ ] Create form to add a new entry
+- [x] Create form to add a new entry
 - [x] Setup Map SDK on client
 - [x] List all log entries on map
 - [ ] DEPLOY!
