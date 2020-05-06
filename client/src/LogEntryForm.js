@@ -26,14 +26,24 @@ const LogEntryForm = ({ location, onClose }) => {
       {error ? <h3>{error}</h3> : null}
       <div className="title-section">
         <input
+          name="apiKey"
+          type="password"
+          placeholder="Placeholder"
+          autoComplete="off"
+          ref={register}
+          required
+        />
+        <label htmlFor="apiKey">API KEY</label>
+      </div>
+      <div className="title-section">
+        <input
           name="title"
           placeholder="Placeholder"
           autoComplete="off"
           ref={register}
+          required
         />
-        <label htmlFor="title" required>
-          Title
-        </label>
+        <label htmlFor="title">Title</label>
       </div>
       <div className="description-section">
         <input
@@ -70,12 +80,13 @@ const LogEntryForm = ({ location, onClose }) => {
           className="visit-date-input"
           placeholder="Placeholder"
           ref={register}
+          required
         />
-        <label htmlFor="visitDate" className="visit-date-label" required>
+        <label htmlFor="visitDate" className="visit-date-label">
           Visit Date
         </label>
         <div className="button-div">
-          <button className="icon-btn add-btn">
+          <button className="icon-btn add-btn" type="submit">
             <div className="add-icon"></div>
             <div className="btn-txt">{loading ? "Loading..." : "Add"}</div>
           </button>

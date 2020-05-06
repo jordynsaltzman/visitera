@@ -48,16 +48,14 @@ const App = () => {
       mapStyle="mapbox://styles/jordynsaltzman/ck9s1ukqx1fej1ioeyteihsn8"
       onDblClick={showAddMarkerPopup}
     >
-      <img
-        src={logo}
-        alt="Visitera logo"
-        style={{ height: "50px", padding: "15px" }}
-      />
+      <img src={logo} alt="Visitera logo" className="logo" />
+
       <Geocoder
         mapRef={mapRef}
         onViewportChange={setViewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       />
+
       {logEntries.map((entry) => (
         <React.Fragment key={entry._id}>
           <Marker latitude={entry.latitude} longitude={entry.longitude}>
@@ -92,9 +90,12 @@ const App = () => {
                 {entry.image ? (
                   <img src={entry.image} alt={entry.title} />
                 ) : null}
-                <p>{entry.comments}</p>
+                <p>{entry.description}</p>
+                <p style={{ fontFamily: "DINPro-Light" }}>
+                  <strong>Comments:</strong> {entry.comments}
+                </p>
                 <small>
-                  Visited on {new Date(entry.visitDate).toLocaleDateString}
+                  Visited on {new Date(entry.visitDate).toLocaleDateString()}
                 </small>
               </div>
             </Popup>

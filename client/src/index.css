@@ -23,6 +23,11 @@ body {
   font-family: "DINPro-Medium";
 }
 
+.logo {
+  height: 50px;
+  padding: 15px;
+}
+
 .fa-map-marker {
   transform: translate(-50%, -100%);
 }
@@ -36,16 +41,21 @@ body {
 }
 
 .popup {
-  width: 30vw;
+  width: 360px;
   padding: 0rem 1rem 1rem 1rem;
 }
 
 .popup img {
   height: 200px;
   width: auto;
+  max-width: 350px;
   text-align: center;
   margin: 0 auto;
   display: block;
+}
+
+.popup h3 {
+  text-align: center;
 }
 
 .title-section,
@@ -211,8 +221,46 @@ input::placeholder {
   height: 4px;
   top: calc(50% - 2px);
 }
-@media only screen and (max-width: 775px) {
+@media only screen and (max-width: 450px) {
   .popup {
-    width: 80vw;
+    width: 300px;
+  }
+
+  .popup img {
+    height: 170px;
+    width: auto;
+    max-width: 290px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .logo {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    padding-bottom: 33px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .popup {
+    width: 270px;
+  }
+
+  .popup img {
+    height: 170px;
+    width: auto;
+    max-width: 260px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .logo {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    padding-bottom: 35px;
   }
 }
