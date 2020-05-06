@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "Visitera",
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/index.js"
+    }
+  ],
+  "alias": [
+    "Visitera"
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "1337",
+    "DATABASE_URL": "@visiter-db",
+    "CORS_ORIGIN": "",
+    "API_KEY": "@visitera-api-key"
+  }
+}
