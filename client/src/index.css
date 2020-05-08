@@ -2,14 +2,16 @@
   font-family: "DINPro-Medium";
   font-style: normal;
   font-weight: normal;
-  src: local("DINPro-Medium"), url("DINPro-Medium_13936.woff") format("woff");
+  src: local("DINPro-Medium"),
+    url("fonts/DINPro-Medium_13936.woff") format("woff");
 }
 
 @font-face {
   font-family: "DINPro-Light";
   font-style: normal;
   font-weight: normal;
-  src: local("DINPro-Light"), url("DINPro-Light_13935.woff") format("woff");
+  src: local("DINPro-Light"),
+    url("fonts/DINPro-Light_13935.woff") format("woff");
 }
 
 body {

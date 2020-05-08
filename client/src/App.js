@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
-
 import { listLogEntries } from "./API";
-import LogEntryForm from "./LogEntryForm";
+import LogEntryForm from "./components/LogEntryForm";
+import EntryPopup from "./components/EntryPopup";
 import logo from "./images/Visitera.png";
 
 const App = () => {
@@ -86,24 +86,7 @@ const App = () => {
               onClose={() => setShowPopup({})}
               anchor="top"
             >
-              <div className="popup">
-                <h3 style={{ marginBottom: "10px" }}>{entry.title}</h3>
-                <hr
-                  style={{
-                    marginBottom: "10px",
-                  }}
-                />
-                {entry.image ? (
-                  <img src={entry.image} alt={entry.title} />
-                ) : null}
-                <p>{entry.description}</p>
-                <p style={{ fontFamily: "DINPro-Light" }}>
-                  <strong>Comments:</strong> {entry.comments}
-                </p>
-                <small>
-                  Visited on {new Date(entry.visitDate).toLocaleDateString()}
-                </small>
-              </div>
+              <EntryPopup entry={entry} />
             </Popup>
           ) : null}
         </React.Fragment>
@@ -134,15 +117,13 @@ const App = () => {
             onClose={() => setAddEntryLocation(null)}
             anchor="top"
           >
-            <div className="popup">
-              <LogEntryForm
-                location={addEntryLocation}
-                onClose={() => {
-                  setAddEntryLocation(null);
-                  getEntries();
-                }}
-              />
-            </div>
+            <LogEntryForm
+              location={addEntryLocation}
+              onClose={() => {
+                setAddEntryLocation(null);
+                getEntries();
+              }}
+            />
           </Popup>
         </>
       ) : null}
