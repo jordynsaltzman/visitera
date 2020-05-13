@@ -23,7 +23,8 @@ Right now, you are required to enter an API key in order to add travels because 
 
 ## Known Issues
 
-This application is currently not very mobile friendly. I plan to make it more responsive in the near future.
+1. This application is currently not very mobile friendly. I plan to make it more responsive in the near future.
+2. There is a strange issue with the map markers appearing overtop of the popups depending on the order the data was added, described here: https://github.com/mapbox/mapbox-gl-js/issues/3109. I have not yet successfully debugged this. 
 
 ## TODO
 
