@@ -24,10 +24,72 @@ body {
   overflow: hidden;
   font-family: "DINPro-Medium";
 }
-
+.nav-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 3px 15px;
+}
 .logo {
   height: 50px;
   padding: 15px;
+}
+
+.select-div select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-div {
+  position: relative;
+}
+
+.select-div::after {
+  content: "\2193"; /* down arrow */
+  color: #5ca4a9;
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 5px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  height: 100%;
+  width: 230px;
+  padding: 10px 3px 10px 10px;
+  background-color: #222;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.822);
+  color: white;
+  border-radius: 5px;
+  font-family: "DINPro-Medium";
+  border: none;
+}
+
+.dropdown-menu:active,
+.dropdown-menu:focus {
+  outline: none;
+}
+
+.dropdown-menu:hover {
+  cursor: pointer;
+}
+
+.dropdown-menu option {
+  font-family: "DINPro-Light";
+  background-color: #222;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.trip-option:hover {
+  cursor: pointer;
+  outline: none !important;
+  background-color: #5ca4a9 !important;
 }
 
 .fa-map-marker {

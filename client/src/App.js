@@ -10,6 +10,7 @@ import SplashScreen from "./components/SplashScreen";
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
+  const [selectedTrip, setSelectedTrip] = useState({ dropdownVal: "" });
   const [showPopup, setShowPopup] = useState({});
   const [addEntryLocation, setAddEntryLocation] = useState(null);
   const [viewport, setViewport] = useState({
@@ -39,6 +40,16 @@ const App = () => {
     });
   };
 
+  const handleDropdownChange = (event) => {
+    setSelectedTrip({
+      dropdownVal: event.target.value,
+    });
+
+    setShowPopup({
+      [event.target.value]: true,
+    });
+  };
+
   let mapRef = React.useRef();
 
   return (
@@ -51,6 +62,21 @@ const App = () => {
       onDblClick={showAddMarkerPopup}
     >
       <img src={logo} alt="Visitera logo" className="logo" />
+      <div className="nav-items">
+        <div className="select-div">
+          <select
+            className="dropdown-menu"
+            onChange={handleDropdownChange}
+            value={selectedTrip.dropdownVal}
+          >
+            {logEntries.map((entry) => (
+              <option className="trip-option" key={entry._id} value={entry._id}>
+                {entry.title}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
       {logEntries.length === 0 ? <SplashScreen /> : null}
 
@@ -59,7 +85,6 @@ const App = () => {
         onViewportChange={setViewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       />
-
       {logEntries.map((entry) => (
         <React.Fragment key={entry._id}>
           <Marker latitude={entry.latitude} longitude={entry.longitude}>
