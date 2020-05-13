@@ -6,6 +6,7 @@ import { listLogEntries } from "./API";
 import LogEntryForm from "./components/LogEntryForm";
 import EntryPopup from "./components/EntryPopup";
 import logo from "./images/Visitera.png";
+import SplashScreen from "./components/SplashScreen";
 
 const App = () => {
   const [logEntries, setLogEntries] = useState([]);
@@ -50,6 +51,8 @@ const App = () => {
       onDblClick={showAddMarkerPopup}
     >
       <img src={logo} alt="Visitera logo" className="logo" />
+
+      {logEntries.length === 0 ? <SplashScreen /> : null}
 
       <Geocoder
         mapRef={mapRef}
