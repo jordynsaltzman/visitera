@@ -1,6 +1,7 @@
 # <img src="client/src/images/Visitera.png" height="50px">
 
 [Go to the deployed application!](https://visitera.now.sh/)
+_Disclaimer: The backend is deployed on Heroku which can be slow to load, so please allow a minute for the markers to populate._
 
 Visitera is a personal travel log application built with a React front-end, a Node/Express backend, and a MongoDB database. It also uses Mapbox Maps SDK to embed a customized map, and a geocoder component to search for places using Mapbox Geocoding API.
 
