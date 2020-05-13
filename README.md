@@ -18,8 +18,8 @@ Right now, you are required to enter an API key in order to add travels because 
 
 ## Preview
 
-![Screenshot](client/src/images/visitera-screenshot.JPG)
-![Screenshot](client/src/images/visitera-screenshot2.JPG)
+![Screenshot](client/src/images/visitera-add-marker.JPG)
+![Screenshot](client/src/images/visitera-view-marker.JPG)
 
 ## Known Issues
 
