@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, FlyToInterpolator } from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
+import * as d3 from "d3-ease";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { listLogEntries } from "./API";
 import LogEntryForm from "./components/LogEntryForm";
@@ -41,12 +42,26 @@ const App = () => {
   };
 
   const handleDropdownChange = (event) => {
+    var val = event.target.value;
+    var valArray = val.split(",");
+    var entryId = valArray[0];
+
     setSelectedTrip({
       dropdownVal: event.target.value,
     });
 
     setShowPopup({
-      [event.target.value]: true,
+      [entryId]: true,
+    });
+
+    setViewport({
+      ...viewport,
+      latitude: parseInt(valArray[1]),
+      longitude: parseInt(valArray[2]),
+      zoom: 5,
+      transitionDuration: 5000,
+      transitionInterpolator: new FlyToInterpolator(),
+      transitionEasing: d3.easeCubic,
     });
   };
 
@@ -70,7 +85,11 @@ const App = () => {
             value={selectedTrip.dropdownVal}
           >
             {logEntries.map((entry) => (
-              <option className="trip-option" key={entry._id} value={entry._id}>
+              <option
+                className="trip-option"
+                key={entry._id}
+                value={[entry._id, entry.latitude, entry.longitude]}
+              >
                 {entry.title}
               </option>
             ))}
